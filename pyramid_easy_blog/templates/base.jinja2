@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="/static/kube/css/kube.css" />
+    <link rel="stylesheet" type="text/css" href="/static/kube/css/master.css" />
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% block head %}
+    <title>{% block title %}{% endblock %}My Blog</title>
+    {% endblock %}
+</head>
+<body>
+    <div class="wrapper">
+
+        <header id="header">
+            <h1><a href="{{ request.application_url }}">Logo</a></h1>
+            <nav id="nav">
+            <ul>
+                <li><span><a href="{{ request.application_url }}">Home</a></span></li>
+                <li><span>
+                {% if logged_in %}
+                <a href="{{ request.application_url }}/logout">Logout {{ logged_in }}</a>
+                {% else %}
+                <a href="{{ request.application_url }}/login">Login</a>
+                {% endif %}
+                </span></li>
+
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+            </ul>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="row">
+                <article class="threequarter">
+                    <div id="content">{% block content %}{% endblock %}</div>
+                </article>
+                <aside class="quarter">
+                <div class="inner">
+                    <h6>Sidebar</h6>
+                    <nav id="navside">
+                    <ul>
+
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+
+                    </ul>
+                    </nav>
+                </div>
+                </aside>
+            </div>
+        </div>
+
+        <ul id="blocks" class="block-three">
+            <li>
+            <div class="inner">1</div>
+            </li>
+            <li>
+            <div class="inner">2</div>
+
+            </li>
+            <li>
+            <div class="inner">3</div>
+            </li>
+        </ul>
+
+        {% block footer %}
+        <footer id="footer">&copy; Your copyright 2012</footer>
+        {% endblock %}
+    </div>
+
+</body>
+</html>

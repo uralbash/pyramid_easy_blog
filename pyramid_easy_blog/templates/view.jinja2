@@ -1,0 +1,21 @@
+{% extends "base.jinja2" %}
+{% block title %}View post - {% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1>View post</h1>
+    <h2>{{ title }}</h2>
+    <p class="important">
+    {{ content|safe }}
+    </p>
+    {% if logged_in %}
+      <a href="{{ request.current_route_url() }}/edit_post">
+      <h6>Edit post</h6></a>
+    {% endif %}
+    tags: {{ tags }}
+    <br><hr>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.jinja2" %}
+{% block title %}View post - {% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1>View blog</h1>
+    {% for post in posts %}
+        <a href="{{ request.application_url }}/{{ post.id }}">
+            <h2>{{ post.title }}</h2></a>
+        <p class="important">
+        {{ post.content|safe }} <!-- How to use truncate with wyiswig? -->
+        </p>
+        tags: {{ post.tags }}
+        <br><hr>
+    {% endfor %}
+{% endblock %}
